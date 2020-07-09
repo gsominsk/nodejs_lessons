@@ -17,6 +17,4 @@ const main = () => {
   someFunc();
 };
 
-while (true) {
-  main();
-}
+setInterval(main, 3000);
