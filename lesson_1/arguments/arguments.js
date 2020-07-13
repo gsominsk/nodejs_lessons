@@ -6,7 +6,7 @@
 import yargs from 'yargs';
 const { argv } = yargs;
 
-import { split } from '../../helpers.js';
+import { split } from '../helpers.js';
 
 
 console.log('process argv : ', process.argv);

@@ -1,4 +1,4 @@
-import { split } from './../helpers.js';
+import { split } from './helpers.js';
 
 /**
  * - Встроенный движок v8.

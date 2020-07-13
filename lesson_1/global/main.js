@@ -1,5 +1,5 @@
 import _ from './glob.js'
-import { split } from './../../helpers.js'
+import { split } from '../helpers.js'
 import dotenv from 'dotenv'
 
 dotenv.config();
