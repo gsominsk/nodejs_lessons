@@ -5,25 +5,19 @@
 const dotenv = require('dotenv');
 const http = require('http');
 
-const router = require('./router/index');
+const router = require('./router');
 
 dotenv.config();
 
 const requestListener = async (req, res) => {
-  const { url } = req;
-
-  const call = await router[url];
-
-  let result = '';
+  const call = await router[req.url];
 
   try {
-    result = call();
+    res.end(call());
   } catch (err) {
     res.write(500);
     res.end(err);
   }
-
-  res.end(result);
 };
 
 const server = http.createServer(requestListener);

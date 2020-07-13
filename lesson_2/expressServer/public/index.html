@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Hello </h1>
+
+    <form name="person" action="/users/create" method="POST">
+        <input name="name" value="Ivan">
+        <input name="surname" value="Ivanov">
+    </form>
+
+</body>
+
+<script>
+    let formData = new FormData(document.forms.person);
+    formData.append("patronym", "Робертович");
+
+    console.log('wut: ', document.forms.person);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/users/");
+    // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhr.send(formData);
+
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(JSON.stringify({
+        surname: document.forms.person.surname.value,
+        name: document.forms.person.name.value
+    }));
+
+</script>
+
+</html>
+
