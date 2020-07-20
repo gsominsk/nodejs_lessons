@@ -1,22 +1,22 @@
-const { Router } = require("express");
+const { Router } = require('express')
 
-const { weather } = require('../controllers/weatherController')
+const weatherController = require('./../controllers/weatherController');
 
 const weatherRouter = Router();
 
-const call = async (func, params, res) => {
+const call = async (func, body, res) => {
     try {
-        const result = await func(params);
+        const result = await func(body);
         res.send(result);
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ error: JSON.stringify(error) });
+    } catch (err) {
+        res.status(500).send(err);
     }
+
 }
 
-weatherRouter.get("/", (req, res) => {
-    const params = req.query;
-    call(weather, params, res);
+weatherRouter.get("/", async (req, res, next) => {
+    const body = req.query;
+    await call(weatherController, body, res);
 });
 
 module.exports = weatherRouter;
