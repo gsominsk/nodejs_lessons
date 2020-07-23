@@ -21,3 +21,4 @@ mongodb+srv://test_user_god:<password>@cluster0.mbbol.mongodb.net/<dbname>?retry
 
 https://docs.mongodb.com/manual
 https://docs.mongodb.com/manual/reference/operator/query/
+https://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html
