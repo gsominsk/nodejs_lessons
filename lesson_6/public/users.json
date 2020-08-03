@@ -1,0 +1,212 @@
+[
+  {
+    "_id": "5f18c47d6f577ba221d9b1b5",
+    "id": 0,
+    "name": "Mabel",
+    "age": 36,
+    "email": "mabeldaniels@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Deleon Mason"
+      },
+      {
+        "id": 1,
+        "name": "Bass Stanley"
+      },
+      {
+        "id": 2,
+        "name": "Rowland Bowers"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47d1fa859b08fccbdbf",
+    "id": 1,
+    "name": "Michael",
+    "age": 20,
+    "email": "michaelbowers@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Michelle Morgan"
+      },
+      {
+        "id": 1,
+        "name": "Hoffman Hoffman"
+      },
+      {
+        "id": 2,
+        "name": "Wolfe Hoover"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47d98c501dd356886e4",
+    "id": 2,
+    "name": "Kimberly",
+    "age": 40,
+    "email": "kimberlyhoover@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Horton Tillman"
+      },
+      {
+        "id": 1,
+        "name": "Milagros Richardson"
+      },
+      {
+        "id": 2,
+        "name": "John Curtis"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47d5835c6d23247a725",
+    "id": 3,
+    "name": "Lorrie",
+    "age": 20,
+    "email": "lorriecurtis@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Jackie Douglas"
+      },
+      {
+        "id": 1,
+        "name": "Molina Williamson"
+      },
+      {
+        "id": 2,
+        "name": "Helen Dorsey"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47db695c68e778873ab",
+    "id": 4,
+    "name": "Marissa",
+    "age": 20,
+    "email": "marissadorsey@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Faith Sharp"
+      },
+      {
+        "id": 1,
+        "name": "Fanny Copeland"
+      },
+      {
+        "id": 2,
+        "name": "Herring Buck"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47dd249c9b889a85a33",
+    "id": 5,
+    "name": "Goodwin",
+    "age": 37,
+    "email": "goodwinbuck@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Bette Harris"
+      },
+      {
+        "id": 1,
+        "name": "Rodriquez Leon"
+      },
+      {
+        "id": 2,
+        "name": "Mccoy Tyson"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47d5804c03c290249f4",
+    "id": 6,
+    "name": "Shaw",
+    "age": 39,
+    "email": "shawtyson@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Casey Howard"
+      },
+      {
+        "id": 1,
+        "name": "Isabelle Holloway"
+      },
+      {
+        "id": 2,
+        "name": "Roberson Velasquez"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47dfb9b42a0fad35267",
+    "id": 7,
+    "name": "Marsha",
+    "age": 34,
+    "email": "marshavelasquez@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Adrienne Cain"
+      },
+      {
+        "id": 1,
+        "name": "Kidd Stewart"
+      },
+      {
+        "id": 2,
+        "name": "Lawrence Moon"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47d811543d749465fd4",
+    "id": 8,
+    "name": "Alta",
+    "age": 28,
+    "email": "altamoon@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Beth Best"
+      },
+      {
+        "id": 1,
+        "name": "Mcgowan Dixon"
+      },
+      {
+        "id": 2,
+        "name": "Aida Patrick"
+      }
+    ]
+  },
+  {
+    "_id": "5f18c47d439c46225fe56f78",
+    "id": 9,
+    "name": "Holloway",
+    "age": 21,
+    "email": "hollowaypatrick@fishland.com",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Coleen Knowles"
+      },
+      {
+        "id": 1,
+        "name": "Winters Blevins"
+      },
+      {
+        "id": 2,
+        "name": "Robert Frederick"
+      }
+    ]
+  }
+]
