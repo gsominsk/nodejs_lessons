@@ -2,16 +2,14 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose
 
 const userSchema = new Schema({
-    id: mongoose.Schema.Types.Number,
+    _id: String,
     name: mongoose.Schema.Types.String,
     age: mongoose.Schema.Types.Number,
     email: mongoose.Schema.Types.String,
-    friends: [
-        {
-            id: Number,
-            name: String,
-        }
-    ],
+    tasks: {
+        type: mongoose.Schema.Types.ObjectID,
+        ref: 'tasks',
+    },
     created: {
         type: Date,
         default: Date.now

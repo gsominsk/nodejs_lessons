@@ -2,10 +2,10 @@ const { throwErr } = require('../helpers');
 
 const user = {
     get: async (data, { mongoDb }) => {
-        const { Users: usersCollection } = mongoDb;
+        const { Users: usersModel } = mongoDb;
         const { id } = data.params;
 
-        const user = await usersCollection.findOne({ id: parseInt(id, 10) });
+        const user = await usersModel.findById(id);
 
         if (!user) throwErr(400, 'User not found');
 
@@ -13,8 +13,8 @@ const user = {
     },
 
     getAll: async (_, { mongoDb }) => {
-        const { Users: usersCollection } = mongoDb;
-        const users = await usersCollection.find();
+        const { Users: usersModel } = mongoDb;
+        const users = await usersModel.find();
         return {
             status: 'ok',
             users
@@ -22,8 +22,8 @@ const user = {
     },
 
     create: async (data, { mongoDb }) => {
-        const { Users: usersCollection } = mongoDb;
-        await usersCollection.create(data);
+        const { Users: usersModel } = mongoDb;
+        await usersModel.create(data);
 
         return ({
             status: 'ok',
@@ -31,20 +31,20 @@ const user = {
     },
 
     update: async (data, { mongoDb }) => {
-        const { Users: usersCollection } = mongoDb;
+        const { Users: usersModel } = mongoDb;
         const { name, age } = data;
-        const id = parseInt(data.params.id);
+        const _id = data.params.id;
 
-        await usersCollection.findOneAndUpdate({ id }, { name, age });
+        await usersModel.findOneAndUpdate({ _id }, { name, age });
 
         return ({ status: 'ok' });
     },
 
     delete: async (data, { mongoDb }) => {
-        const { Users: usersCollection } = mongoDb;
-        const id = parseInt(data.params.id);
+        const { Users: usersModel } = mongoDb;
+        const _id = parseInt(data.params.id);
 
-        await usersCollection.deleteOne({ id });
+        await usersModel.deleteOne({ _id });
 
         return ({
             status: 'ok',

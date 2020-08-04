@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose
 
 const taskSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    id: mongoose.Schema.Types.Number,
-    userId: mongoose.Schema.Types.Number,
+    userId: {
+        type: mongoose.Schema.Types.ObjectID,
+        ref: 'users'
+    },
     title: mongoose.Schema.Types.String,
     message: mongoose.Schema.Types.String,
     created: {
