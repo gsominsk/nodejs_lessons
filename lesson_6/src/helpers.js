@@ -15,7 +15,7 @@ const makeCall = async (req, res, func) => {
             message = 'Bad request'
         } = error;
 
-        res.status(status );
+        res.status(status);
         res.send({ message });
     }
 }

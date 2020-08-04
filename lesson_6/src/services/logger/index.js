@@ -1,8 +1,8 @@
 const logger = async (req, res, next) => {
-    const { logsCollection } = req.mongoDb;
+    const { Logs: logsCollection } = req.mongoDb;
     const { method } = req;
 
-    logsCollection.insertOne({
+    await logsCollection.create({
         url: req.url,
         headers: req.headers,
         date: new Date(),

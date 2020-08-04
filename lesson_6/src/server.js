@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 const { user } = require('./router');
 const logger = require('./services/logger');
-const { setupMongoDb } = require('./services/mongoClient');
+const { setupMongoDb } = require('./db');
 
 dotenv.config({ path: __dirname + '/../.env' });
 
