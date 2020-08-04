@@ -3,7 +3,7 @@ const { Schema } = mongoose
 
 const taskSchema = new Schema({
     userId: {
-        type: mongoose.Schema.Types.ObjectID,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
     title: mongoose.Schema.Types.String,

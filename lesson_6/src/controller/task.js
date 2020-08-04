@@ -26,12 +26,21 @@ const task = {
             Tasks: taskModel,
             Users: userModel,
         } = mongoDb;
-        const { userId } = data;
+        const { userId, title, message } = data;
 
-        await taskModel.create(data);
+        const user = await userModel.findById(userId);
+
+        console.log({ user });
+
+        const task = await taskModel.create({
+            title,
+            message,
+            userId: userId._id
+        });
 
         return ({
             status: 'ok',
+            task,
         });
     },
 
