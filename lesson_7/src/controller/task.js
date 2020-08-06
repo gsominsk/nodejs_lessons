@@ -33,28 +33,6 @@ const task = {
             task,
         });
     },
-
-    update: async (data, { mongoDb }) => {
-        const { Tasks: taskModel } = mongoDb;
-        const { title, message } = data;
-        const id = parseInt(data.params.id);
-
-        await taskModel.findOneAndUpdate({ id }, { name, age });
-
-        return ({ status: 'ok' });
-    },
-
-    delete: async (data, { mongoDb }) => {
-        const { Tasks: taskModel } = mongoDb;
-        const id = parseInt(data.params.id);
-
-        await taskModel.deleteOne({ id });
-
-        return ({
-            status: 'ok',
-            id,
-        });
-    }
 };
 
 module.exports = task;

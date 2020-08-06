@@ -9,8 +9,6 @@ const user = {
             .findOne({ _id: id })
             .populate('tasks');
 
-        console.log(user);
-
         if (!user) throwErr(400, 'User not found');
 
         return user;

@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
-const { user, task } = require('./router');
+const { user, task, auth } = require('./router');
 const logger = require('./services/logger');
 const { setupMongoDb } = require('./db');
 
@@ -21,6 +21,7 @@ const server = async (port, callback) => {
 
     app.use('/users', user);
     app.use('/tasks', task);
+    app.use('/auth', auth);
 
     app.listen(port, callback);
 };
