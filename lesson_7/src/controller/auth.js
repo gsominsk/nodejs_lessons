@@ -17,7 +17,7 @@ const auth = {
 
         // check password generate new token and update user in db
         const token = await user.generateToken();
-        const userWithToken = await userModel.findOneAndUpdate({ _id: user._id }, { $set: { token } });
+        const userWithToken = await userModel.findOneAndUpdate({ _id: user._id }, { token }, { new: true });
 
         return {
             status: 'ok',
