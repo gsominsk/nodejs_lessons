@@ -40,8 +40,6 @@ userSchema.methods.generateToken = function() {
     const user = this;
     const { JWT_SECRET_TOKEN } = process.env
 
-    console.log({ JWT_SECRET_TOKEN });
-
     return jwt.sign({ _id: user._id }, JWT_SECRET_TOKEN);
 };
 
