@@ -1,5 +1,10 @@
-const { cloudinary } = require('./../services/cloudinary');
-let streamifier = require('streamifier');
+const { createReadStream, cloudUploadOne } = require('./../services/cloudinary');
+
+const uploadMany = (files) =>
+    Promise.all(files.map((file) => {
+        const { buffer } = file;
+        return createReadStream(buffer);
+    }))
 
 const file = {
     upload: async (req, res) => {
@@ -7,23 +12,24 @@ const file = {
 
         if(!filedata) return res.send("File upload error.");
 
-        const uploadResponse = await cloudinary.uploader.upload(__dirname + '/../static/draft/jimcarrey.jpg');
+        const uploadResponse = await cloudUploadOne(__dirname + '/../static/draft/jimcarrey.jpg');
 
         res.send("File uploaded");
     },
     uploadCloud: async (req, res) => {
         const buffer = req.file.buffer;
-
-        let cld_upload_stream = cloudinary.uploader.upload_stream({},
-            function(error, result) {
-                console.log(error, result);
-            }
-        );
-
-        await streamifier.createReadStream(req.file.buffer).pipe(cld_upload_stream);
+        const result = await createReadStream(buffer);
 
         res.send("File uploaded");
     },
+    uploadCloudMany: async (req, res) => {
+        const { files } = req;
+        const result = await uploadMany(files);
+
+        console.log({ result });
+
+        res.send('ok');
+    }
 };
 
 module.exports = file;

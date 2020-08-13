@@ -27,6 +27,7 @@ const server = async (port, callback) => {
     app.use('/tasks', task);
     app.use('/auth', auth);
     app.post('/upload', upload.single('filedata'), file.uploadCloud);
+    app.post('/upload/many', upload.any(), file.uploadCloudMany);
 
     app.listen(port, callback);
 };

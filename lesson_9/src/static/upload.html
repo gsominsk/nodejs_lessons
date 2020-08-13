@@ -8,7 +8,14 @@
     <h1>Upload file</h1>
     <form action="/upload" method="post" enctype="multipart/form-data">
         <label>Файл</label><br>
-        <input type="file" name="filedata" /><br><br>
+        <input type="file" name="filedata"/><br><br>
+        <input type="submit" value="Send" />
+    </form>
+
+    <h1>Upload many files</h1>
+    <form action="/upload/many" method="post" enctype="multipart/form-data">
+        <label>Файл</label><br>
+        <input type="file" name="filedata" required multiple/><br><br>
         <input type="submit" value="Send" />
     </form>
 </body>
