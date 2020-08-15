@@ -3,15 +3,15 @@ const dotenv = require('dotenv');
 const assert = require('assert');
 
 dotenv.config({
-    path: __dirname + '/../.env'
+    path: __dirname + './../../.env'
 });
 
 const url = `http://localhost:${process.env.PORT}`
 
 const test = {
     user: {
-        get: async () => {
-            const result = await got.get(`${url}/users/get/1`);
+        get: ({ id }) => async () => {
+            const result = await got.get(`${url}/users/get/${id}`);
             const body = JSON.parse(result.body);
 
             console.log('GET /users/get/:id : ', body);
@@ -22,25 +22,16 @@ const test = {
 
             console.log('GET /users/get : ', body);
         },
-        post: async () => {
-            const postData = {
-                id: 100,
-                name: 'new one',
-                email: 'newOne@gmail.com'
-            };
-
+        post: (postData) => async () => {
             const result = await got.post(`${url}/users/create`, {
                 json: postData,
             })
             const body = JSON.parse(result.body);
             console.log('POST /users/create : ', body);
+            return body;
         },
-        patch: async () => {
-            const postData = {
-                name: 'new name new life',
-                email: 'newOneWithNewLife@gmail.com'
-            };
-
+        patch: () => (postData) => async () => {
+            const { id, toUpdate } = postData;
             const result = await got.patch(`${url}/users/update/100`, {
                 json: postData,
             })
@@ -48,8 +39,8 @@ const test = {
 
             console.log('PATCH /users/update/:id : ', body);
         },
-        delete: async () => {
-            const result = await got.delete(`${url}/users/delete/100`);
+        delete: ({ id }) => async () => {
+            const result = await got.delete(`${url}/users/delete/${id}`);
             const body = JSON.parse(result.body);
 
             console.log('DELETE /users/delete/:id : ', body);
@@ -66,11 +57,23 @@ const run = test => {
 };
 
 const userTest = async () => {
-    // await run(test.user.get);
     await run(test.user.getAll);
-    // await run(test.user.post);
-    // await run(test.user.patch);
-    // await run(test.user.delete);
+
+    const { user } = await run(test.user.post({
+        login: 'abc_2',
+        password: '123'
+    }));
+
+    await run(test.user.get({ id: user._id }));
+
+    await run(test.user.patch({
+        id: user._id,
+        toUpdate: {
+            password: '321'
+        },
+    }));
+
+    await run(test.user.delete({ id: user._id }));
 
     return 'ok';
 };

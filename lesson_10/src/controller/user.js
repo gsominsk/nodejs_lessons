@@ -26,11 +26,11 @@ const user = {
     create: async (data, { mongoDb }) => {
         const { Users: usersModel } = mongoDb;
         const user = new usersModel(data);
-
-        await user.save();
+        const created = await user.save();
 
         return ({
             status: 'ok',
+            user: created,
         });
     },
 
