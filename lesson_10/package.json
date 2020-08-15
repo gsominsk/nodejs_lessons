@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "node __tests__/integration/user.js",
-    "start": "node src/app.js"
+    "test-simple": "node __tests__/user.js",
+    "test": "mocha __tests__/integration",
+    "start": "nodemon src/app.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,9 +21,11 @@
     "imagemin": "^7.0.1",
     "imagemin-mozjpeg": "^9.0.0",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^8.1.1",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.27",
     "multer": "^1.4.2",
-    "streamifier": "^0.1.1"
+    "streamifier": "^0.1.1",
+    "supertest": "^4.0.2"
   }
 }

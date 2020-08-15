@@ -10,7 +10,7 @@ const { upload } = require('./services/multer');
 const file = require('./controller/file');
 const { setupMongoDb } = require('./db');
 
-const server = async (port, callback) => {
+const server = async (port = 3000, callback = () => {}) => {
     const app = express();
     const mongoDb = await setupMongoDb();
 
@@ -30,6 +30,8 @@ const server = async (port, callback) => {
     app.post('/upload/many', upload.any(), file.uploadCloudMany);
 
     app.listen(port, callback);
+
+    return app;
 };
 
 module.exports = server;
