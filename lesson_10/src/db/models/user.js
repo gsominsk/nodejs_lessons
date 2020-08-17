@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    login: mongoose.Schema.Types.String,
+    login: {
+        type: mongoose.Schema.Types.String,
+    },
     password: mongoose.Schema.Types.String,
     token: {
         type: mongoose.Schema.Types.String,
@@ -38,13 +40,13 @@ userSchema.methods.comparePassword = function(candidatePassword) {
 
 userSchema.methods.generateToken = function() {
     const user = this;
-    const { JWT_SECRET_TOKEN } = process.env
+    const { JWT_SECRET_TOKEN } = process.env;
 
     return jwt.sign({ _id: user._id }, JWT_SECRET_TOKEN);
 };
 
 userSchema.methods.isValidToken = function(token) {
-    const { JWT_SECRET_TOKEN } = process.env
+    const { JWT_SECRET_TOKEN } = process.env;
 
     try {
         jwt.verify(token, JWT_SECRET_TOKEN);

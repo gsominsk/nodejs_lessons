@@ -10,4 +10,8 @@ const log = (error) => {
     console.log(`App configured on port : ${PORT}`);
 };
 
-server(PORT, log);
+(async () => {
+    const app = await server();
+
+    app.listen(PORT, log);
+})();

@@ -6,8 +6,8 @@
   "scripts": {
     "test-simple": "node __tests__/user.js",
     "test-unit": "mocha __tests__/unit",
-    "test": "mocha __tests__/integration",
-    "start": "nodemon src/app.js"
+    "test": "mocha __tests__/integration --timeout 30000",
+    "dev": "nodemon src/app.js"
   },
   "author": "",
   "license": "ISC",
