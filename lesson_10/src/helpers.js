@@ -8,8 +8,6 @@ const makeCall = async (req, res, func) => {
         const result = await func(data, ctx);
         res.send(result);
     } catch (error) {
-        console.log(error);
-        
         const {
             status = 500,
             message = 'Bad request'

@@ -11,7 +11,10 @@ const user = {
 
         if (!user) throwErr(400, 'User not found');
 
-        return user;
+        return {
+            status: 'ok',
+            user
+        };
     },
 
     getAll: async (_, { mongoDb }) => {
@@ -25,6 +28,14 @@ const user = {
 
     create: async (data, { mongoDb }) => {
         const { Users: usersModel } = mongoDb;
+        const { login, password } = data;
+
+        if (!login || !password) return throwErr(400, 'API error: missed required field');
+
+        const alreadyExists = await usersModel.findOne({ login });
+
+        if (alreadyExists) return throwErr(400, 'User already exists');
+
         const user = new usersModel(data);
         const created = await user.save();
 
@@ -46,13 +57,13 @@ const user = {
 
     delete: async (data, { mongoDb }) => {
         const { Users: usersModel } = mongoDb;
-        const _id = parseInt(data.params.id);
+        const _id = data.params.id;
 
         await usersModel.deleteOne({ _id });
 
         return ({
             status: 'ok',
-            id,
+            id: _id,
         });
     }
 };
