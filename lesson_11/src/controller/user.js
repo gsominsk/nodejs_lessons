@@ -1,4 +1,6 @@
 const { throwErr } = require('../helpers');
+const { sendMail } = require('./../services/sendGrid');
+
 
 const user = {
     get: async (data, { mongoDb }) => {
@@ -28,16 +30,18 @@ const user = {
 
     create: async (data, { mongoDb }) => {
         const { Users: usersModel } = mongoDb;
-        const { login, password } = data;
+        const { login, password, email } = data;
 
-        if (!login || !password) return throwErr(400, 'API error: missed required field');
+        if (!login || !password || !email) return throwErr(400, 'API error: missed required field');
 
-        const alreadyExists = await usersModel.findOne({ login });
+        const alreadyExists = await usersModel.findOne({ email });
 
         if (alreadyExists) return throwErr(400, 'User already exists');
 
         const user = new usersModel(data);
         const created = await user.save();
+
+        await sendMail(email);
 
         return ({
             status: 'ok',

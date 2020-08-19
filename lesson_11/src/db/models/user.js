@@ -9,6 +9,7 @@ const userSchema = new Schema({
         type: mongoose.Schema.Types.String,
     },
     password: mongoose.Schema.Types.String,
+    email: mongoose.Schema.Types.String,
     token: {
         type: mongoose.Schema.Types.String,
         default: null,
